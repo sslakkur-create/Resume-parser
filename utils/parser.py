@@ -4,8 +4,9 @@ import spacy
 try:
     nlp = spacy.load("en_core_web_sm")
 except OSError:
-    raise OSError("Run: python -m spacy download en_core_web_sm")
-
+    from spacy.cli import download
+    download("en_core_web_sm")
+    nlp = spacy.load("en_core_web_sm")
 SECTION_HEADERS = {
     "education":   r"(education|academic|qualification)",
     "experience":  r"(experience|work history|employment|career)",
